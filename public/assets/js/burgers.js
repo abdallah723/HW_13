@@ -32,13 +32,15 @@ $(function() {
         data: newBurger
       }).then(
         function() {
-          console.log("Created new burger");
+          console.log("New Burger Added");
           location.reload();
         }
       );
     });
   
+    
     $(".delete-burger").on("click", function(event) {
+
       const id = $(this).data("id");
   
       $.ajax("/api/burgers/" + id, {
