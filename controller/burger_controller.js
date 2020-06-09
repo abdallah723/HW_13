@@ -1,6 +1,6 @@
 const express = require ("express");
 const router = express.Router();
-const burger = require ("../models/burgers.js");
+const burger = require ("../models/burger.js");
 
 router.get('/', function (req, res) {
     burger.getAll(function(data) {
@@ -12,8 +12,8 @@ router.get('/', function (req, res) {
     });
 });
 
-router.post("/api/burgers", function (req, res) {
-    burgers.create ([
+router.post("/api/burger", function (req, res) {
+    burger.create ([
         "name", "devoured"
     ], [
         req.body.name, req.body.devoured
@@ -22,7 +22,7 @@ router.post("/api/burgers", function (req, res) {
     });
 });
 
-router.put("/api/burgers/:id", function (req, res) {
+router.put("/api/burger/:id", function (req, res) {
     const condition = `id =  ${req.params.id}`;
     
     console.log("Condition: ", condition);
@@ -38,7 +38,7 @@ router.put("/api/burgers/:id", function (req, res) {
     });
 });
 
-router.delete("/api/burgers/:id", function (req, res) {
+router.delete("/api/burger/:id", function (req, res) {
     const condition = `id =  ${req.params.id}`;
 
     burger.delete(condition, function (result) {

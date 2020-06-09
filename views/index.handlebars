@@ -3,6 +3,7 @@
     <div class = "jumbotron">
         <h1> Burgers </h1>
         <p>Choose a burger to try!</p>
+        <br>
         <h2>Create your own burger!</h2>
         <panel>
             <form class="create-form">
@@ -21,8 +22,38 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading" id="leftside">Order your Burger</div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}} 
+                            <span> {{this.id}} - {{this.burger_name}}</span>
+                            <button type= "button" class= "eatburger btn btn-warning" id= "eatbutton" data-id="{{this .id}}" data-newDevoured= "{{devoured}}"><span class= "fa fa-usd"></span></button>
+                            <hr>
+                            {{/unless}}
+                            {{/each}}
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="col-sum-6">
+        <div class="panel panel-default">
+            <div class ="panel-heading" id= "rightside">Devour The Burger</div>
+            <div class="panel-body">
+                <ul>
+                        {{#each Burgers}}
+                        {{#if devoured}} 
+                        <span> {{this.id}} {{this.burger_name}}</span>
+                        <button type="button" class="trashburger btn btn-warning" id="trashbutton" data-id="{{this .id}}" data-newDevoured="{{devoured}}"><span class="fa fa-trash"></span></button>
+                        <hr>
+
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+            </div>
+        </div>
+
     </div>
 
  

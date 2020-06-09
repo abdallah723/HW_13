@@ -1,6 +1,6 @@
-const connection = require('../config/connection');
+const connection = require('../config/connection.js');
 
-function questionMarks(num) {
+function questionMark(num) {
     var arr = [];
     for(var i = 0; i < num; i++) {
         arr.push('?');
@@ -8,7 +8,7 @@ function questionMarks(num) {
     return arr.toString();
 }
 
-function translateSql(obj) {
+function translateSql(ob) {
     var arr = [];
     for (var key in ob) {
         var value = ob[key];
@@ -33,7 +33,7 @@ const orm = {
         });
     },
     insertOne: function (table, cols, vals, cb) {
-        const dbQuery = 'INSER INTO ' + table + ' ( ' + cols.toString() + ' ) ' + ' VALUES ( ' + questionMarks(vals.length) + ' ) ';
+        const dbQuery = 'INSER INTO ' + table + ' ( ' + cols.toString() + ' ) ' + ' VALUES ( ' + questionMark(vals.length) + ' ) ';
 
         console.log(dbQuery);
         connection.query(dbQuery, vals, function (err, res) {
