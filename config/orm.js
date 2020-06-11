@@ -33,7 +33,7 @@ const orm = {
         });
     },
     insertOne: function (table, cols, vals, cb) {
-        const dbQuery = 'INSER INTO ' + table + ' ( ' + cols.toString() + ' ) ' + ' VALUES ( ' + questionMark(vals.length) + ' ) ';
+        const dbQuery = 'INSERT INTO ' + table + ' ( ' + cols.toString() + ' ) ' + ' VALUES ( ' + questionMark(vals.length) + ' ) ';
 
         console.log(dbQuery);
         connection.query(dbQuery, vals, function (err, res) {
@@ -47,7 +47,7 @@ const orm = {
     updateOne: function (table, objColVals, condition, cb) {
         const dbQuery = 'UPDATE ' + table + ' SET ' + translateSql(objColVals) + ' WHERE ' + condition; 
 
-        connection.query(dbQuery, vals, function (err, res) {
+        connection.query(dbQuery, function (err, res) {
             if (err) {
                 throw err;
             }
@@ -58,7 +58,7 @@ const orm = {
     deleteOne: function (table, condition, cb) {
         const dbQuery = 'DELETE FROM ' + table + ' WHERE ' + condition;
 
-        connection.query(dbQuery, vals, function (err, res) {
+        connection.query(dbQuery, function (err, res) {
             if (err) {
                 throw err;
             }

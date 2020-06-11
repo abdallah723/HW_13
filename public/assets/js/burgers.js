@@ -3,7 +3,7 @@ $(function() {
     event.preventDefault();
 
     var newBurger = {
-      name: $("#newburger")
+      burger_name: $("#newburger")
         .val()
         .trim(),
       devoured: 0
@@ -26,7 +26,7 @@ $(function() {
       devoured: 1
     };
 
-    $.ajax("/api/burgers/" + id, {
+    $.ajax("/api/burger/" + id, {
       type: "PUT",
       data: devouredState
     }).then(function() {
@@ -39,6 +39,7 @@ $(function() {
     event.preventDefault();
 
     var id = $(this).data("id");
+    console.log(id);
 
     // Send the DELETE request.
     $.ajax({
